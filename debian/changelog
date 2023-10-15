@@ -1,6 +1,26 @@
+llvm-toolchain-16 (1:16.0.6-16) unstable; urgency=medium
+
+  * Bring back old version of spirv - necessary for apt.llvm.org
+
+  [ Alexandre Detiste ]
+  * Remove python-six as dep
+
+  [ Li Chen ]
+  * Add support for loongarch64 (Closes: #1053658)
+  * Cherry-pick upstream patch D142688 to fix the build failure on loong64
+    (Closes: #1053655)
+
+  [ Matthias Klose ]
+  * Disable the clc and wasm builds when not building binary indep packages.
+  * Limit the parallel links to 2 on riscv64.
+  * d/rules: Be less noisy when building without grpc.
+
+ -- Sylvestre Ledru <sylvestre@debian.org>  Sat, 14 Oct 2023 18:37:48 +0200
+
 llvm-toolchain-16 (1:16.0.6-15) unstable; urgency=medium
 
   * Second attempt to refresh D158066.patch (Closes: #1049362)
+    (SIMD compatibility headers on ppc64el)
 
  -- Gianfranco Costamagna <locutusofborg@debian.org>  Mon, 11 Sep 2023 15:40:42 +0200
 
