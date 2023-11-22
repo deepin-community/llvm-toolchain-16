@@ -1,5 +1,50 @@
+llvm-toolchain-16 (1:16.0.6-18) unstable; urgency=medium
+
+  [ Gianfranco Costamagna ]
+  * Upload to sid
+
+  [ Sylvestre Ledru ]
+  * Change the logic to disable SPIRV. Disable it on most of the versions because
+    it needs llvm-spirv-16.
+    Enabled on trixie/sid, Ubuntu Mantic
+    FAILED: spirv-mesa3d-.spv /build/source/libclc/build/spirv-mesa3d-.spv
+    cd /build/source/libclc/build && /usr/bin/llvm-spirv-15
+       --spirv-max-version=1.1 -o spirv-mesa3d-.spv builtins.link.spirv-mesa3d-.bc
+    Unknown attribute kind (86) (Producer: 'LLVM16.0.6' Reader: 'LLVM 15.0.6')
+  * For Ubuntu bionic, improve the deactivation of lldb python
+  * Make libc++-16-dev-wasm32 depends on libc++-16-dev (Closes: #1052002)
+
+  [ Steve Langasek ]
+  * Add noble as supported Ubuntu release
+
+  [ John Paul Adrian Glaubitz ]
+  * Don't run chrpath for libclang on sparc and sparc64
+
+ -- Sylvestre Ledru <sylvestre@debian.org>  Sat, 11 Nov 2023 09:57:35 +0100
+
+llvm-toolchain-16 (1:16.0.6-17exp1) experimental; urgency=medium
+
+  * Fixup the move from all to any
+  * Update debian/README documentation
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Tue, 24 Oct 2023 12:38:21 +0200
+
+llvm-toolchain-16 (1:16.0.6-17) unstable; urgency=medium
+
+  * Try to fix the wasm path detection (Closes: #1052002)
+
+ -- Sylvestre Ledru <sylvestre@debian.org>  Thu, 19 Oct 2023 22:37:29 +0200
+
 llvm-toolchain-16 (1:16.0.6-16) unstable; urgency=medium
 
+  [ Gianfranco Costamagna ]
+  * Make libclang-common-16-dev arch:any (Closes: #1041455)
+    It was arch:all because all the code isn't arch dependant
+    However, it causes issues for cross build.
+    So, back to any and libclang-common-@LLVM_VERSION@-dev (= ${binary:Version})
+    instead of source
+
+  [ Sylvestre Ledru ]
   * Bring back old version of spirv - necessary for apt.llvm.org
 
   [ Alexandre Detiste ]
@@ -15,7 +60,7 @@ llvm-toolchain-16 (1:16.0.6-16) unstable; urgency=medium
   * Limit the parallel links to 2 on riscv64.
   * d/rules: Be less noisy when building without grpc.
 
- -- Sylvestre Ledru <sylvestre@debian.org>  Sat, 14 Oct 2023 18:37:48 +0200
+ -- Sylvestre Ledru <sylvestre@debian.org>  Sun, 08 Oct 2023 09:11:38 +0200
 
 llvm-toolchain-16 (1:16.0.6-15) unstable; urgency=medium
 
